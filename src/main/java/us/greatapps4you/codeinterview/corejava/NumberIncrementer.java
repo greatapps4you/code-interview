@@ -6,6 +6,8 @@
 
 package us.greatapps4you.codeinterview.corejava;
 
+import java.util.Arrays;
+
 /**
  * Given an Array of Integers representing a number,
  * increment that array in 1 unit at each method call
@@ -14,6 +16,20 @@ package us.greatapps4you.codeinterview.corejava;
 public class NumberIncrementer {
 
     public int[] increment(int[] input) {
-        return new int[]{1, 2, 4};
+        int number = extractNumber(input);
+        String incremented = number + 1 + "";
+        int[] output = new int[incremented.length()];
+        for (int i = 0; i < incremented.length(); i++) {
+            output[i] = Integer.parseInt(incremented.substring(i, i + 1));
+        }
+        return output;
+    }
+
+    private int extractNumber(int[] input) {
+        StringBuilder number = new StringBuilder();
+        for (Integer n : input) {
+            number.append(n);
+        }
+        return Integer.parseInt(number.toString());
     }
 }
