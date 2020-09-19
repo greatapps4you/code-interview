@@ -36,4 +36,12 @@ class NumberIncrementerTest {
         assertArrayEquals(expected, actual);
     }
 
+    @Test
+    void giveMixedArrayOfNumbersWhenIncrementedThenReturnIncrementedArray() {
+        int[] given = {1,3,8,9};
+        int[] actual = numberIncrementer.increment(given);
+        int[] expected = {1,3,9,0};
+        assertArrayEquals(expected, actual);
+    }
+
 }
