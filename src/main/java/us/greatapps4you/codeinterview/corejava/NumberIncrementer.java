@@ -15,7 +15,7 @@ public class NumberIncrementer {
 
     public int[] increment(int[] input) {
         int number = extractNumber(input);
-        String incremented = number + 1 + "";
+        String incremented = String.valueOf(number + 1);
         int[] output = new int[incremented.length()];
         for (int i = 0; i < incremented.length(); i++) {
             output[i] = Integer.parseInt(incremented.substring(i, i + 1));
