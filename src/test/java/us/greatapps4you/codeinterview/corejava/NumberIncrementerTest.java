@@ -16,15 +16,23 @@ class NumberIncrementerTest {
     private NumberIncrementer numberIncrementer;
 
     @BeforeEach
-    void init(){
+    void init() {
         this.numberIncrementer = new NumberIncrementer();
     }
 
     @Test
-    void givenNumberArrayWhenIncrementedThenReturnIncrementedArray(){
-        int[] given = {1,2,3};
+    void givenNumberArrayWhenIncrementedThenReturnIncrementedArray() {
+        int[] given = {1, 2, 3};
         int[] actual = numberIncrementer.increment(given);
-        int[] expected = {1,2,4};
+        int[] expected = {1, 2, 4};
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void givenLargeArrayOfNineWhenIncrementedThenReturnIncrementedArray() {
+        int[] given = {9, 9, 9, 9, 9, 9, 9};
+        int[] actual = numberIncrementer.increment(given);
+        int[] expected = {1, 0, 0, 0, 0, 0, 0, 0};
         assertArrayEquals(expected, actual);
     }
 

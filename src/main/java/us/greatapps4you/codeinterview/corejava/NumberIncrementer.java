@@ -6,8 +6,6 @@
 
 package us.greatapps4you.codeinterview.corejava;
 
-import java.util.Arrays;
-
 /**
  * Given an Array of Integers representing a number,
  * increment that array in 1 unit at each method call
