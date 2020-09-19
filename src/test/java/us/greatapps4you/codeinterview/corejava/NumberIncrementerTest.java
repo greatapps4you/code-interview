@@ -17,7 +17,7 @@ class NumberIncrementerTest {
     private NumberIncrementer numberIncrementer;
 
     @BeforeEach
-    void init() {
+    void setUp() {
         this.numberIncrementer = new NumberIncrementer();
     }
 
