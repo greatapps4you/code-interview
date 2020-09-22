@@ -38,6 +38,14 @@ class NumberIncrementerTest {
     }
 
     @Test
+    void givenArrayOfNineWithEightWhenIncrementedThenReturnIncrementedArray() {
+        int[] given = {9, 8, 9, 9};
+        int[] actual = numberIncrementer.increment(given);
+        int[] expected = {9, 9, 0, 0};
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
     void giveMixedArrayOfNumbersWhenIncrementedThenReturnIncrementedArray() {
         int[] given = {1,3,8,9};
         int[] actual = numberIncrementer.increment(given);

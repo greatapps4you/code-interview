@@ -6,11 +6,10 @@
 
 package us.greatapps4you.codeinterview.corejava;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 class NumberIncrementerWithPrimitivesTest {
 
@@ -34,6 +33,14 @@ class NumberIncrementerWithPrimitivesTest {
         int[] given = {9, 9, 9, 9, 9, 9, 9};
         int[] actual = numberIncrementer.increment(given);
         int[] expected = {1, 0, 0, 0, 0, 0, 0, 0};
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void givenArrayOfNineWithEightWhenIncrementedThenReturnIncrementedArray() {
+        int[] given = {9, 8, 9, 9};
+        int[] actual = numberIncrementer.increment(given);
+        int[] expected = {9, 9, 0, 0};
         assertArrayEquals(expected, actual);
     }
 

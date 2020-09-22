@@ -7,9 +7,7 @@
 package us.greatapps4you.codeinterview.corejava;
 
 /**
- * Given an Array of Integers representing a number,
- * increment that array in 1 unit at each method call
- * and return the incremented array.
+ * Algorithm: increment number in Array of int form in 1 unit and output array of int
  */
 public class NumberIncrementer {
 

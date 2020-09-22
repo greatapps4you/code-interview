@@ -10,9 +10,6 @@ public class NumberIncrementerWithPrimitives {
 
     /**
      * Algorithm: increment number in Array of int form in 1 unit and output array of int
-     *
-     * @param input
-     * @return
      */
     public int[] increment(int[] input) {
 
@@ -20,13 +17,21 @@ public class NumberIncrementerWithPrimitives {
          *   Initial state
          */
         int[] output = new int[input.length];
-        final int FIRST_DIGIT_INDEX = 0;
+        final int MOST_LEFT_DIGIT_INDEX = 0;
         final int UNITY_DIGIT_INDEX = input.length - 1;
         int currentDigitIndex = input.length - 1;
         int previousCarryOne = 0;
 
         // Iterate over the input from right to left
         while (currentDigitIndex >= 0) {
+
+            // The End
+            // Carry one reached the most left digit
+            if (currentDigitIndex == MOST_LEFT_DIGIT_INDEX && previousCarryOne == 1) {
+                output = increaseArraySize(output);
+                output[0] = 1;
+                return output;
+            }
 
             //The initial digit value considers the previous carried one
             int currentDigitValue = input[currentDigitIndex];
@@ -58,5 +63,15 @@ public class NumberIncrementerWithPrimitives {
         }
 
         return output;
+    }
+
+    private int[] increaseArraySize(int[] old) {
+        int[] increased = new int[old.length + 1];
+        int counter = old.length - 1;
+        while (counter >= 0) {
+            increased[counter] = old[counter];
+            counter--;
+        }
+        return increased;
     }
 }
