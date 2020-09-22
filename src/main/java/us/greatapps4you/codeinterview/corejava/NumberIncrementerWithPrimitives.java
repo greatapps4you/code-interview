@@ -6,8 +6,6 @@
 
 package us.greatapps4you.codeinterview.corejava;
 
-import java.util.Arrays;
-
 public class NumberIncrementerWithPrimitives {
 
     /**
@@ -18,59 +16,44 @@ public class NumberIncrementerWithPrimitives {
      */
     public int[] increment(int[] input) {
 
-        // 0 - Initial state
-        int[] output = Arrays.copyOf(input, input.length);
+        /*
+         *   Initial state
+         */
+        int[] output = new int[input.length];
         final int FIRST_DIGIT_INDEX = 0;
-        final int LAST_DIGIT_INDEX = input.length - 1;
+        final int UNITY_DIGIT_INDEX = input.length - 1;
         int currentDigitIndex = input.length - 1;
-        int carryOne = 0;
+        int previousCarryOne = 0;
 
-        // 1 - Iterate over the input from right to left
+        // Iterate over the input from right to left
         while (currentDigitIndex >= 0) {
 
-            // 2 - Increment the current digit
-            int currentDigitIncremented = input[currentDigitIndex] + 1;
+            //The initial digit value considers the previous carried one
+            int currentDigitValue = input[currentDigitIndex];
 
-            // 3 - Treat carry
-            carryOne = currentDigitIncremented >= 10 ? 1 : 0;
+            // Only in two cases should increment:
+            // when there is a previous one carried and when the current digit is the unity
+            if (previousCarryOne == 1 || currentDigitIndex == UNITY_DIGIT_INDEX) {
+                currentDigitValue += 1;
+            }
 
-                if (carryOne == 1) {
-                    output[currentDigitIndex] = (currentDigitIncremented - 10) + carryOne;
-                } else {
-                    output[currentDigitIndex] = input[currentDigitIndex];
-                }
-//            //First of all let's treat the unity digit
-//            if (currentDigitIndex == LAST_DIGIT_INDEX) {
-//                if ((input[currentDigitIndex] + carry - 10) + 1 > 0) {
-//                    output[currentDigitIndex] = 0;
-//                } else {
-//                    output[currentDigitIndex] = input[currentDigitIndex] + 1;
-//                }
-//            } else {
-//                if (carry > 0) {
-//                    //Let's take carry in
-//                    int valueWithCarry = input[currentDigitIndex] + carry;
-//
-//                    if ((valueWithCarry - 10) + 1 > 0) {
-//                        output[currentDigitIndex] = 0;
-//                    } else {
-//                        output[currentDigitIndex] = valueWithCarry;
-//                    }
-//                } else {
-//                    output[currentDigitIndex] = input[currentDigitIndex];
-//                }
-//            }
-//            //Always Calculate carry
-//            carry = (input[currentDigitIndex] + carry - 10) + 1;
-//            //Go towards the first INDEX
+            // The current carry on is needed in order to properly initilize currentDigitValue
+            int currentCarryOne = currentDigitValue >= 10 ? 1 : 0;
 
+            // Initialize the output
+            if (currentCarryOne == 1) {
+                // Take only the Unity part of the decimal
+                output[currentDigitIndex] = currentDigitValue - 10;
+            } else {
+                output[currentDigitIndex] = currentDigitValue;
+            }
 
-            System.out.println(output[currentDigitIndex]);
-            System.out.println("Carry: " + carryOne);
+            System.out.println("previousCarryOne: " + previousCarryOne);
+            System.out.println("currentCarryOne: " + currentCarryOne);
+            System.out.println("Initilized output: " + output[currentDigitIndex]);
+            System.out.println("-------------------");
 
-            // 3 - Must carry on?
-
-
+            previousCarryOne = currentCarryOne;
             currentDigitIndex--;
         }
 
